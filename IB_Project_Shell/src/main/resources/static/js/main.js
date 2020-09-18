@@ -163,6 +163,32 @@ function foo() {
 	    }
 	});
 }
+function register() {
+	
+	// kreiramo JavaScript objekat sa podacima koje je korisnik uneo u input polja
+	var user = {
+		'username' : $('#username').val(),
+		'password': $('#password').val(),
+		'name' : $('#name').val(),
+		'lname' : $('#lname').val(),
+		'email' : $('#email').val()
+	}
+	
+	// podatke na backend uvek saljemo kao JSON string
+	var userJSON = JSON.stringify(user);
+	
+	$.ajax({
+	    url : '/auth/login',
+	    type: 'POST',
+	    data : userJSON,
+	    contentType:"application/json; charset=utf-8",
+	    dataType:"json",
+	    success: function(data)
+	   
+	    error: function (error)
+	    {
+	    		    }
+	});
 
 
 // funkcija za citanje podataka iz jwt tokena (payload)
